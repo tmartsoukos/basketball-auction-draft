@@ -1,5 +1,10 @@
 # Basketball Auction Draft
 
+**▶ Παίξε εδώ: https://tmartsoukos.github.io/basketball-auction-draft/**
+
+Άνοιξε το link στο κινητό σου, φτιάξε δωμάτιο και στείλε τον κωδικό στον αντίπαλο.
+Στο Chrome/Safari μπορείς να το προσθέσεις στην αρχική οθόνη και να παίζει σαν κανονική εφαρμογή.
+
 Online PWA δημοπρασίας μπασκετμπολιστών για **δύο παίκτες**, ο καθένας στο δικό του κινητό.
 Ο ένας φτιάχνει δωμάτιο, στέλνει link/κωδικό στον άλλον, και πλειοδοτούν εναλλάξ για 10 παίκτες.
 Καμία εγκατάσταση από app store — αρκεί ένα link (προαιρετικά «Προσθήκη στην αρχική οθόνη»).
@@ -76,6 +81,12 @@ npx supabase functions deploy create_game join_game set_ready reveal_player plac
 
 Οι functions χρησιμοποιούν τα `SUPABASE_URL` και `SUPABASE_SERVICE_ROLE_KEY` που δίνει αυτόματα το Supabase runtime.
 
+## Deployment
+
+Κάθε push στο `main` τρέχει το `.github/workflows/deploy.yml`: validation + unit tests, build με
+`VITE_BASE_PATH=/basketball-auction-draft/`, και δημοσίευση στο GitHub Pages.
+Τα `VITE_SUPABASE_URL` και `VITE_SUPABASE_ANON_KEY` έρχονται από τα repository secrets.
+
 ## Scripts
 
 | Εντολή | Τι κάνει |
@@ -96,3 +107,6 @@ npx supabase functions deploy create_game join_game set_ready reveal_player plac
 - Δύο παίκτες στην ίδια συσκευή και τον ίδιο browser μοιράζονται `localStorage` — για δοκιμή χρησιμοποίησε
   δεύτερο browser ή διαφορετικό origin (π.χ. `127.0.0.1` αντί για `localhost`).
 - Τα ratings είναι στατικά seed data, όχι live στατιστικά.
+- Το anon key είναι ενσωματωμένο στο bundle, όπως προβλέπεται από το Supabase: δίνει μόνο δικαίωμα
+  ανάγνωσης των δωματίων μέσω RLS. Κάθε εγγραφή (προσφορά, αποχώρηση, νέος γύρος) περνάει από Edge Function
+  που απαιτεί έγκυρο session token.

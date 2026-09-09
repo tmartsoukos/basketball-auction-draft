@@ -30,5 +30,5 @@ export function roomCodeFromUrl(): string | null {
 }
 
 export function shareLink(roomCode: string): string {
-  return `${window.location.origin}/?room=${roomCode}`;
+  return `${window.location.origin}${import.meta.env.BASE_URL}?room=${roomCode}`;
 }

@@ -33,7 +33,7 @@ export default function App() {
   function leave() {
     clearSession();
     setSession(null);
-    window.history.replaceState({}, '', '/');
+    window.history.replaceState({}, '', import.meta.env.BASE_URL);
   }
 
   if (!session) {
