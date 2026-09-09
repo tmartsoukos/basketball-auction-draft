@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { SeatIndex } from '@bad/engine';
-import { checkGameOver } from '@bad/engine';
+import { checkGameOver, rosterTarget } from '@bad/engine';
 import type { GameView } from '../lib/useGame';
 import { ApiError, revealPlayer } from '../lib/api';
 import { playerById } from '../lib/players';
@@ -38,24 +38,25 @@ export function RoundResultScreen({ view, seatIndex, sessionToken, gameId }: Pro
     <div className="screen">
       <div className="banner">
         {result && player ? (
-          result.winnerSeat === null ? (
-            <p>
-              Ο <strong>{player.name}</strong> έμεινε αδιάθετος — κανείς δεν πλειοδότησε.
-            </p>
-          ) : (
-            <p>
-              Ο <strong>{state.seats[result.winnerSeat].nickname}</strong> πήρε τον{' '}
-              <strong>{player.name}</strong> για <strong>{result.price}</strong>.
-            </p>
-          )
+          <p>
+            Ο <strong>{state.seats[result.winnerSeat].nickname}</strong> πήρε τον{' '}
+            <strong>{player.name}</strong> για <strong>{result.price}</strong>.
+            {result.auto && ' Η πεντάδα του αντιπάλου είναι πλήρης, οπότε δεν έγινε δημοπρασία.'}
+          </p>
         ) : (
           <p>Ο γύρος ολοκληρώθηκε.</p>
         )}
       </div>
 
       <div className="seats">
-        <SeatPanel seat={state.seats[0]} isMe={seatIndex === 0} />
-        <SeatPanel seat={state.seats[1]} isMe={seatIndex === 1} />
+        {state.seats.map((seat) => (
+          <SeatPanel
+            key={seat.seatIndex}
+            seat={seat}
+            isMe={seatIndex === seat.seatIndex}
+            target={rosterTarget(state)}
+          />
+        ))}
       </div>
 
       {error && <p className="error">{error}</p>}

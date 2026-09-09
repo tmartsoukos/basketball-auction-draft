@@ -54,9 +54,18 @@ export function createInitialState(input: CreateStateInput): GameState {
     turnSeat: 0,
     highestBid: 0,
     highestBidderSeat: null,
-    noBidPasses: 0,
     lastResult: null,
   };
+}
+
+/** Πόσους παίκτες αποκτά συνολικά κάθε ομάδα: οι μισοί γύροι στον καθένα. */
+export function rosterTarget(state: GameState): number {
+  return state.totalRounds / 2;
+}
+
+/** Πόσες θέσεις λείπουν ακόμα από την πεντάδα ενός seat. */
+export function slotsLeft(state: GameState, seat: SeatIndex): number {
+  return rosterTarget(state) - state.seats[seat].roster.length;
 }
 
 /** Το ελάχιστο ποσό που επιτρέπεται να δηλώσει αυτός που έχει σειρά. */
@@ -64,10 +73,47 @@ export function minimumBid(state: GameState): number {
   return state.highestBid === 0 ? 1 : state.highestBid + state.increment;
 }
 
-/** Μπορεί αυτός που έχει σειρά να πλειοδοτήσει, ή είναι αναγκασμένος να περάσει; */
+/**
+ * Το μέγιστο ποσό που επιτρέπεται να δηλώσει ένα seat: πρέπει να του μείνει
+ * τουλάχιστον 1 για κάθε θέση που θα του λείπει μετά από αυτή την αγορά,
+ * ώστε να μπορεί πάντα να συμπληρώσει την πεντάδα του.
+ */
+export function maxBid(state: GameState, seat: SeatIndex): number {
+  const slots = slotsLeft(state, seat);
+  if (slots <= 0) return 0;
+  return state.seats[seat].budget - slots + 1;
+}
+
+/** Μπορεί αυτός που έχει σειρά να πλειοδοτήσει, ή του επιτρέπεται μόνο να αποχωρήσει; */
 export function canBid(state: GameState): boolean {
   if (state.phase !== 'auction') return false;
-  return state.seats[state.turnSeat].budget >= minimumBid(state);
+  return maxBid(state, state.turnSeat) >= minimumBid(state);
+}
+
+/** Ο ανοίγων δεν επιτρέπεται να αποχωρήσει: κάθε γύρος πρέπει να καταλήξει σε αγορά. */
+export function mustBid(state: GameState, seat: SeatIndex): boolean {
+  return state.phase === 'auction' && state.turnSeat === seat && state.highestBidderSeat === null;
+}
+
+function award(
+  state: GameState,
+  winnerSeat: SeatIndex,
+  playerId: string,
+  price: number,
+  auto = false
+): GameState {
+  const seats = state.seats.map((s) =>
+    s.seatIndex === winnerSeat
+      ? { ...s, budget: s.budget - price, roster: [...s.roster, playerId] }
+      : s
+  ) as [SeatState, SeatState];
+
+  return {
+    ...state,
+    phase: 'round_result',
+    seats,
+    lastResult: { round: state.round, playerId, winnerSeat, price, ...(auto ? { auto } : {}) },
+  };
 }
 
 /**
@@ -89,21 +135,28 @@ export function nextRound(state: GameState): EngineResult {
   const round = state.round + 1;
   const openerSeat = (((round - 1) % 2) as SeatIndex);
 
-  return {
-    ok: true,
-    state: {
-      ...state,
-      phase: 'auction',
-      round,
-      pool: restPool,
-      currentPlayerId: nextPlayerId,
-      openerSeat,
-      turnSeat: openerSeat,
-      highestBid: 0,
-      highestBidderSeat: null,
-      noBidPasses: 0,
-    },
+  const revealed: GameState = {
+    ...state,
+    phase: 'auction',
+    round,
+    pool: restPool,
+    currentPlayerId: nextPlayerId,
+    openerSeat,
+    turnSeat: openerSeat,
+    highestBid: 0,
+    highestBidderSeat: null,
   };
+
+  // Αν η μία πεντάδα έχει κλείσει, δεν έχει νόημα δημοπρασία: ο παίκτης πάει
+  // κατευθείαν στον άλλον στην ελάχιστη τιμή.
+  const fullSeat = revealed.seats.find((s) => s.roster.length >= rosterTarget(revealed));
+  if (fullSeat) {
+    const winnerSeat = other(fullSeat.seatIndex);
+    const price = Math.min(1, revealed.seats[winnerSeat].budget);
+    return { ok: true, state: award(revealed, winnerSeat, nextPlayerId, price, true) };
+  }
+
+  return { ok: true, state: revealed };
 }
 
 /** Καταχωρεί προσφορά. Ο έλεγχος σειράς/budget/ελάχιστου ποσού γίνεται εδώ. */
@@ -124,6 +177,14 @@ export function applyBid(state: GameState, seat: SeatIndex, amount: number): Eng
   if (amount > state.seats[seat].budget) {
     return fail('BID_OVER_BUDGET', 'Δεν έχεις αρκετό budget για αυτή την προσφορά.');
   }
+  const max = maxBid(state, seat);
+  if (amount > max) {
+    const reserve = slotsLeft(state, seat) - 1;
+    return fail(
+      'BID_OVER_RESERVE',
+      `Πρέπει να κρατήσεις ${reserve} για τις υπόλοιπες θέσεις σου. Μέγιστη προσφορά: ${max}.`
+    );
+  }
 
   return {
     ok: true,
@@ -131,16 +192,14 @@ export function applyBid(state: GameState, seat: SeatIndex, amount: number): Eng
       ...state,
       highestBid: amount,
       highestBidderSeat: seat,
-      noBidPasses: 0,
       turnSeat: other(seat),
     },
   };
 }
 
 /**
- * Αποχώρηση από τη δημοπρασία.
- * - Αν υπάρχει ήδη προσφορά, ο πλειοδότης παίρνει τον παίκτη στο ποσό της.
- * - Αν δεν υπάρχει προσφορά, περνάει η σειρά· αν περάσουν και οι δύο, ο παίκτης μένει αδιάθετος.
+ * Αποχώρηση από τη δημοπρασία: ο τελευταίος που πλειοδότησε παίρνει τον παίκτη.
+ * Ο ανοίγων δεν μπορεί να αποχωρήσει πριν δηλώσει προσφορά.
  */
 export function applyPass(state: GameState, seat: SeatIndex): EngineResult {
   if (state.phase !== 'auction') {
@@ -149,41 +208,13 @@ export function applyPass(state: GameState, seat: SeatIndex): EngineResult {
   if (seat !== state.turnSeat) {
     return fail('NOT_YOUR_TURN', 'Δεν είναι η σειρά σου.');
   }
-
-  const playerId = state.currentPlayerId as string;
-
   if (state.highestBidderSeat === null) {
-    const noBidPasses = state.noBidPasses + 1;
-    if (noBidPasses < 2) {
-      return { ok: true, state: { ...state, noBidPasses, turnSeat: other(seat) } };
-    }
-    return {
-      ok: true,
-      state: {
-        ...state,
-        phase: 'round_result',
-        noBidPasses,
-        lastResult: { round: state.round, playerId, winnerSeat: null, price: 0 },
-      },
-    };
+    return fail('OPENER_MUST_BID', 'Ανοίγεις τον γύρο, οπότε πρέπει να κάνεις προσφορά.');
   }
-
-  const winnerSeat = state.highestBidderSeat;
-  const price = state.highestBid;
-  const seats = state.seats.map((s) =>
-    s.seatIndex === winnerSeat
-      ? { ...s, budget: s.budget - price, roster: [...s.roster, playerId] }
-      : s
-  ) as [SeatState, SeatState];
 
   return {
     ok: true,
-    state: {
-      ...state,
-      phase: 'round_result',
-      seats,
-      lastResult: { round: state.round, playerId, winnerSeat, price },
-    },
+    state: award(state, state.highestBidderSeat, state.currentPlayerId as string, state.highestBid),
   };
 }
 

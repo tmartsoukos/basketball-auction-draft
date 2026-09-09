@@ -17,7 +17,6 @@ interface GameRow {
   turn_seat: SeatIndex;
   highest_bid: number;
   highest_bidder_seat: SeatIndex | null;
-  no_bid_passes: number;
   last_result: GameState['lastResult'];
 }
 
@@ -60,7 +59,6 @@ function toState(game: GameRow, rows: SeatRow[]): GameState {
     turnSeat: game.turn_seat,
     highestBid: game.highest_bid,
     highestBidderSeat: game.highest_bidder_seat,
-    noBidPasses: game.no_bid_passes,
     lastResult: game.last_result,
   };
 }

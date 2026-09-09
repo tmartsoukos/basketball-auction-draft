@@ -5,9 +5,10 @@ interface Props {
   seat: SeatState;
   isMe: boolean;
   isTurn?: boolean;
+  target?: number;
 }
 
-export function SeatPanel({ seat, isMe, isTurn }: Props) {
+export function SeatPanel({ seat, isMe, isTurn, target }: Props) {
   const roster = playersByIds(seat.roster);
 
   return (
@@ -16,6 +17,12 @@ export function SeatPanel({ seat, isMe, isTurn }: Props) {
         <strong>
           {seat.nickname}
           {isMe ? ' (εσύ)' : ''}
+          {target !== undefined && (
+            <span className="slots">
+              {' '}
+              {roster.length}/{target}
+            </span>
+          )}
         </strong>
         <span className="budget">{seat.budget}€</span>
       </div>

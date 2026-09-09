@@ -24,7 +24,6 @@ export interface GameRow {
   turn_seat: SeatIndex;
   highest_bid: number;
   highest_bidder_seat: SeatIndex | null;
-  no_bid_passes: number;
   last_result: GameState['lastResult'];
 }
 
@@ -67,7 +66,6 @@ export function toState(game: GameRow, players: PlayerRow[]): GameState {
     turnSeat: game.turn_seat,
     highestBid: game.highest_bid,
     highestBidderSeat: game.highest_bidder_seat,
-    noBidPasses: game.no_bid_passes,
     lastResult: game.last_result,
   };
 }
@@ -160,7 +158,6 @@ export async function persistState(
       turn_seat: state.turnSeat,
       highest_bid: state.highestBid,
       highest_bidder_seat: state.highestBidderSeat,
-      no_bid_passes: state.noBidPasses,
       last_result: state.lastResult,
       updated_at: new Date().toISOString(),
     })
@@ -190,7 +187,7 @@ export async function recordRoundOutcome(
   await client
     .from('game_pool')
     .update({
-      status: result.winnerSeat === null ? 'unsold' : 'sold',
+      status: 'sold',
       won_by_seat: result.winnerSeat,
       price: result.price,
     })

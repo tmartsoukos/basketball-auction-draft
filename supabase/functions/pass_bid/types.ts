@@ -27,8 +27,10 @@ export type Phase = 'lobby' | 'auction' | 'round_result' | 'finished';
 export interface RoundResult {
   round: number;
   playerId: string;
-  winnerSeat: SeatIndex | null;
+  winnerSeat: SeatIndex;
   price: number;
+  /** Ανατέθηκε χωρίς δημοπρασία, επειδή η πεντάδα του αντιπάλου ήταν ήδη πλήρης. */
+  auto?: boolean;
 }
 
 export interface GameState {
@@ -48,8 +50,6 @@ export interface GameState {
   turnSeat: SeatIndex;
   highestBid: number;
   highestBidderSeat: SeatIndex | null;
-  /** Πόσοι πέρασαν χωρίς να έχει γίνει καμία προσφορά στον γύρο. */
-  noBidPasses: number;
   lastResult: RoundResult | null;
 }
 
@@ -58,7 +58,8 @@ export type EngineErrorCode =
   | 'NOT_YOUR_TURN'
   | 'BID_TOO_LOW'
   | 'BID_OVER_BUDGET'
-  | 'POOL_EMPTY'
+  | 'BID_OVER_RESERVE'
+  | 'OPENER_MUST_BID'
   | 'GAME_OVER';
 
 export type EngineResult =

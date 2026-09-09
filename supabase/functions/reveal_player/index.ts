@@ -5,6 +5,7 @@ import {
   expectationOf,
   loadGame,
   persistState,
+  recordRoundOutcome,
   serviceClient,
 } from './db.ts';
 import { nextRound } from './engine.ts';
@@ -52,9 +53,16 @@ Deno.serve(async (req: Request) => {
     throw err;
   }
 
+  // Ο γύρος μπορεί να έχει ήδη κριθεί: αν η μία πεντάδα είναι πλήρης,
+  // ο παίκτης ανατίθεται αυτόματα στον άλλον χωρίς δημοπρασία.
+  if (result.state.phase === 'round_result' && result.state.lastResult) {
+    await recordRoundOutcome(client, body.gameId, result.state.lastResult);
+  }
+
   return json({
     round: result.state.round,
-    playerId: result.state.currentPlayerId,
+    playerId: result.state.lastResult?.playerId ?? result.state.currentPlayerId,
+    autoAssigned: result.state.phase === 'round_result',
     finished: result.state.phase === 'finished',
   });
 });

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { SeatIndex } from '@bad/engine';
-import { minimumBid } from '@bad/engine';
+import { maxBid, minimumBid, mustBid, rosterTarget, slotsLeft } from '@bad/engine';
 import type { GameView } from '../lib/useGame';
 import { ApiError, passBid, placeBid } from '../lib/api';
 import { playerById } from '../lib/players';
@@ -24,8 +24,10 @@ export function AuctionScreen({ view, seatIndex, sessionToken, gameId, opponentO
   const player = playerById(state.currentPlayerId);
   const myTurn = state.turnSeat === seatIndex;
   const min = minimumBid(state);
-  const myBudget = state.seats[seatIndex].budget;
-  const canAffordMin = myBudget >= min;
+  const max = maxBid(state, seatIndex);
+  const canAffordMin = max >= min;
+  const reserve = Math.max(slotsLeft(state, seatIndex) - 1, 0);
+  const openerMustBid = mustBid(state, seatIndex);
 
   async function act(fn: () => Promise<unknown>) {
     setBusy(true);
@@ -63,7 +65,15 @@ export function AuctionScreen({ view, seatIndex, sessionToken, gameId, opponentO
           </p>
         )}
         <p className={myTurn ? 'turn-indicator mine' : 'turn-indicator'}>
-          {myTurn ? 'Είναι η σειρά σου' : `Σειρά: ${state.seats[state.turnSeat].nickname}`}
+          {myTurn
+            ? openerMustBid
+              ? 'Ανοίγεις τον γύρο — πρέπει να κάνεις προσφορά'
+              : 'Είναι η σειρά σου'
+            : `Σειρά: ${state.seats[state.turnSeat].nickname}`}
+        </p>
+        <p className="muted">
+          Μέγιστη προσφορά σου: {Math.max(max, 0)}
+          {reserve > 0 && ` (κρατάς ${reserve} για τις υπόλοιπες θέσεις σου)`}
         </p>
       </div>
 
@@ -77,13 +87,15 @@ export function AuctionScreen({ view, seatIndex, sessionToken, gameId, opponentO
         >
           Προσφορά {min}
         </button>
-        <button
-          className="secondary"
-          disabled={!myTurn || busy}
-          onClick={() => act(() => passBid({ gameId, sessionToken }))}
-        >
-          Αποχωρώ
-        </button>
+        {!openerMustBid && (
+          <button
+            className="secondary"
+            disabled={!myTurn || busy}
+            onClick={() => act(() => passBid({ gameId, sessionToken }))}
+          >
+            Αποχωρώ
+          </button>
+        )}
       </div>
 
       <div className="custom-bid">
@@ -91,7 +103,7 @@ export function AuctionScreen({ view, seatIndex, sessionToken, gameId, opponentO
           type="number"
           inputMode="numeric"
           min={min}
-          max={myBudget}
+          max={max}
           value={customAmount}
           placeholder={`Δικό σου ποσό (≥ ${min})`}
           onChange={(e) => setCustomAmount(e.target.value)}
@@ -111,8 +123,15 @@ export function AuctionScreen({ view, seatIndex, sessionToken, gameId, opponentO
       )}
 
       <div className="seats">
-        <SeatPanel seat={state.seats[0]} isMe={seatIndex === 0} isTurn={state.turnSeat === 0} />
-        <SeatPanel seat={state.seats[1]} isMe={seatIndex === 1} isTurn={state.turnSeat === 1} />
+        {state.seats.map((seat) => (
+          <SeatPanel
+            key={seat.seatIndex}
+            seat={seat}
+            isMe={seatIndex === seat.seatIndex}
+            isTurn={state.turnSeat === seat.seatIndex}
+            target={rosterTarget(state)}
+          />
+        ))}
       </div>
     </div>
   );
