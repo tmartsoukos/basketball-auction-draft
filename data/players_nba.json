@@ -1,92 +1,36 @@
 [
-  {
-    "id": "nba_pg_1",
-    "name": "Luka Doncic",
-    "league": "nba",
-    "team": "Los Angeles Lakers",
-    "position": "PG",
-    "overallRating": 96,
-    "photoUrl": null
-  },
-  {
-    "id": "nba_pg_2",
-    "name": "Shai Gilgeous-Alexander",
-    "league": "nba",
-    "team": "Oklahoma City Thunder",
-    "position": "PG",
-    "overallRating": 97,
-    "photoUrl": null
-  },
-  {
-    "id": "nba_sg_1",
-    "name": "Anthony Edwards",
-    "league": "nba",
-    "team": "Minnesota Timberwolves",
-    "position": "SG",
-    "overallRating": 93,
-    "photoUrl": null
-  },
-  {
-    "id": "nba_sg_2",
-    "name": "Devin Booker",
-    "league": "nba",
-    "team": "Phoenix Suns",
-    "position": "SG",
-    "overallRating": 92,
-    "photoUrl": null
-  },
-  {
-    "id": "nba_sf_1",
-    "name": "Jayson Tatum",
-    "league": "nba",
-    "team": "Boston Celtics",
-    "position": "SF",
-    "overallRating": 95,
-    "photoUrl": null
-  },
-  {
-    "id": "nba_sf_2",
-    "name": "Kevin Durant",
-    "league": "nba",
-    "team": "Houston Rockets",
-    "position": "SF",
-    "overallRating": 93,
-    "photoUrl": null
-  },
-  {
-    "id": "nba_pf_1",
-    "name": "Giannis Antetokounmpo",
-    "league": "nba",
-    "team": "Milwaukee Bucks",
-    "position": "PF",
-    "overallRating": 97,
-    "photoUrl": null
-  },
-  {
-    "id": "nba_pf_2",
-    "name": "Anthony Davis",
-    "league": "nba",
-    "team": "Dallas Mavericks",
-    "position": "PF",
-    "overallRating": 91,
-    "photoUrl": null
-  },
-  {
-    "id": "nba_c_1",
-    "name": "Nikola Jokic",
-    "league": "nba",
-    "team": "Denver Nuggets",
-    "position": "C",
-    "overallRating": 98,
-    "photoUrl": null
-  },
-  {
-    "id": "nba_c_2",
-    "name": "Victor Wembanyama",
-    "league": "nba",
-    "team": "San Antonio Spurs",
-    "position": "C",
-    "overallRating": 94,
-    "photoUrl": null
-  }
+  { "id": "nba_pg_1", "name": "Shai Gilgeous-Alexander", "league": "nba", "team": "Oklahoma City Thunder", "position": "PG", "overallRating": 97, "photoUrl": null },
+  { "id": "nba_pg_2", "name": "Luka Doncic", "league": "nba", "team": "Los Angeles Lakers", "position": "PG", "overallRating": 96, "photoUrl": null },
+  { "id": "nba_pg_3", "name": "Jalen Brunson", "league": "nba", "team": "New York Knicks", "position": "PG", "overallRating": 92, "photoUrl": null },
+  { "id": "nba_pg_4", "name": "Tyrese Haliburton", "league": "nba", "team": "Indiana Pacers", "position": "PG", "overallRating": 91, "photoUrl": null },
+  { "id": "nba_pg_5", "name": "Cade Cunningham", "league": "nba", "team": "Detroit Pistons", "position": "PG", "overallRating": 91, "photoUrl": null },
+  { "id": "nba_pg_6", "name": "Ja Morant", "league": "nba", "team": "Memphis Grizzlies", "position": "PG", "overallRating": 89, "photoUrl": null },
+
+  { "id": "nba_sg_1", "name": "Anthony Edwards", "league": "nba", "team": "Minnesota Timberwolves", "position": "SG", "overallRating": 94, "photoUrl": null },
+  { "id": "nba_sg_2", "name": "Devin Booker", "league": "nba", "team": "Phoenix Suns", "position": "SG", "overallRating": 92, "photoUrl": null },
+  { "id": "nba_sg_3", "name": "Donovan Mitchell", "league": "nba", "team": "Cleveland Cavaliers", "position": "SG", "overallRating": 92, "photoUrl": null },
+  { "id": "nba_sg_4", "name": "Jalen Williams", "league": "nba", "team": "Oklahoma City Thunder", "position": "SG", "overallRating": 89, "photoUrl": null },
+  { "id": "nba_sg_5", "name": "Tyler Herro", "league": "nba", "team": "Miami Heat", "position": "SG", "overallRating": 87, "photoUrl": null },
+  { "id": "nba_sg_6", "name": "Jalen Green", "league": "nba", "team": "Phoenix Suns", "position": "SG", "overallRating": 85, "photoUrl": null },
+
+  { "id": "nba_sf_1", "name": "Jayson Tatum", "league": "nba", "team": "Boston Celtics", "position": "SF", "overallRating": 95, "photoUrl": null },
+  { "id": "nba_sf_2", "name": "Kevin Durant", "league": "nba", "team": "Houston Rockets", "position": "SF", "overallRating": 93, "photoUrl": null },
+  { "id": "nba_sf_3", "name": "Kawhi Leonard", "league": "nba", "team": "Los Angeles Clippers", "position": "SF", "overallRating": 90, "photoUrl": null },
+  { "id": "nba_sf_4", "name": "Jaylen Brown", "league": "nba", "team": "Boston Celtics", "position": "SF", "overallRating": 90, "photoUrl": null },
+  { "id": "nba_sf_5", "name": "Franz Wagner", "league": "nba", "team": "Orlando Magic", "position": "SF", "overallRating": 89, "photoUrl": null },
+  { "id": "nba_sf_6", "name": "Scottie Barnes", "league": "nba", "team": "Toronto Raptors", "position": "SF", "overallRating": 88, "photoUrl": null },
+
+  { "id": "nba_pf_1", "name": "Giannis Antetokounmpo", "league": "nba", "team": "Milwaukee Bucks", "position": "PF", "overallRating": 97, "photoUrl": null },
+  { "id": "nba_pf_2", "name": "Anthony Davis", "league": "nba", "team": "Dallas Mavericks", "position": "PF", "overallRating": 91, "photoUrl": null },
+  { "id": "nba_pf_3", "name": "Evan Mobley", "league": "nba", "team": "Cleveland Cavaliers", "position": "PF", "overallRating": 90, "photoUrl": null },
+  { "id": "nba_pf_4", "name": "Paolo Banchero", "league": "nba", "team": "Orlando Magic", "position": "PF", "overallRating": 90, "photoUrl": null },
+  { "id": "nba_pf_5", "name": "Julius Randle", "league": "nba", "team": "Minnesota Timberwolves", "position": "PF", "overallRating": 88, "photoUrl": null },
+  { "id": "nba_pf_6", "name": "Lauri Markkanen", "league": "nba", "team": "Utah Jazz", "position": "PF", "overallRating": 88, "photoUrl": null },
+
+  { "id": "nba_c_1", "name": "Nikola Jokic", "league": "nba", "team": "Denver Nuggets", "position": "C", "overallRating": 98, "photoUrl": null },
+  { "id": "nba_c_2", "name": "Victor Wembanyama", "league": "nba", "team": "San Antonio Spurs", "position": "C", "overallRating": 95, "photoUrl": null },
+  { "id": "nba_c_3", "name": "Alperen Sengun", "league": "nba", "team": "Houston Rockets", "position": "C", "overallRating": 91, "photoUrl": null },
+  { "id": "nba_c_4", "name": "Karl-Anthony Towns", "league": "nba", "team": "New York Knicks", "position": "C", "overallRating": 90, "photoUrl": null },
+  { "id": "nba_c_5", "name": "Bam Adebayo", "league": "nba", "team": "Miami Heat", "position": "C", "overallRating": 89, "photoUrl": null },
+  { "id": "nba_c_6", "name": "Domantas Sabonis", "league": "nba", "team": "Sacramento Kings", "position": "C", "overallRating": 89, "photoUrl": null }
 ]

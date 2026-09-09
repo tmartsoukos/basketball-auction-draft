@@ -3,282 +3,102 @@
 import type { GameMode, Player } from './types.ts';
 
 export const PLAYER_POOLS: Record<GameMode, Player[]> = {
-  "euroleague": [
-    {
-      "id": "el_pg_1",
-      "name": "Facundo Campazzo",
-      "league": "euroleague",
-      "team": "Real Madrid",
-      "position": "PG",
-      "overallRating": 88,
-      "photoUrl": null
-    },
-    {
-      "id": "el_pg_2",
-      "name": "Kendrick Nunn",
-      "league": "euroleague",
-      "team": "Panathinaikos",
-      "position": "PG",
-      "overallRating": 90,
-      "photoUrl": null
-    },
-    {
-      "id": "el_sg_1",
-      "name": "Kevin Punter",
-      "league": "euroleague",
-      "team": "Partizan",
-      "position": "SG",
-      "overallRating": 86,
-      "photoUrl": null
-    },
-    {
-      "id": "el_sg_2",
-      "name": "Shane Larkin",
-      "league": "euroleague",
-      "team": "Anadolu Efes",
-      "position": "SG",
-      "overallRating": 87,
-      "photoUrl": null
-    },
-    {
-      "id": "el_sf_1",
-      "name": "Mario Hezonja",
-      "league": "euroleague",
-      "team": "Real Madrid",
-      "position": "SF",
-      "overallRating": 85,
-      "photoUrl": null
-    },
-    {
-      "id": "el_sf_2",
-      "name": "Alec Peters",
-      "league": "euroleague",
-      "team": "Zalgiris Kaunas",
-      "position": "SF",
-      "overallRating": 82,
-      "photoUrl": null
-    },
-    {
-      "id": "el_pf_1",
-      "name": "Nikola Mirotic",
-      "league": "euroleague",
-      "team": "Olympiacos",
-      "position": "PF",
-      "overallRating": 89,
-      "photoUrl": null
-    },
-    {
-      "id": "el_pf_2",
-      "name": "Jan Vesely",
-      "league": "euroleague",
-      "team": "FC Barcelona",
-      "position": "PF",
-      "overallRating": 84,
-      "photoUrl": null
-    },
-    {
-      "id": "el_c_1",
-      "name": "Walter Tavares",
-      "league": "euroleague",
-      "team": "Real Madrid",
-      "position": "C",
-      "overallRating": 90,
-      "photoUrl": null
-    },
-    {
-      "id": "el_c_2",
-      "name": "Mathias Lessort",
-      "league": "euroleague",
-      "team": "Panathinaikos",
-      "position": "C",
-      "overallRating": 86,
-      "photoUrl": null
-    }
+  euroleague: [
+    {"id":"el_pg_1","name":"Kendrick Nunn","league":"euroleague","team":"Panathinaikos","position":"PG","overallRating":90,"photoUrl":null},
+    {"id":"el_pg_2","name":"Facundo Campazzo","league":"euroleague","team":"Real Madrid","position":"PG","overallRating":88,"photoUrl":null},
+    {"id":"el_pg_3","name":"Kostas Sloukas","league":"euroleague","team":"Panathinaikos","position":"PG","overallRating":87,"photoUrl":null},
+    {"id":"el_pg_4","name":"T.J. Shorts","league":"euroleague","team":"Panathinaikos","position":"PG","overallRating":86,"photoUrl":null},
+    {"id":"el_pg_5","name":"Nick Calathes","league":"euroleague","team":"Anadolu Efes","position":"PG","overallRating":85,"photoUrl":null},
+    {"id":"el_pg_6","name":"Markus Howard","league":"euroleague","team":"Dubai Basketball","position":"PG","overallRating":84,"photoUrl":null},
+    {"id":"el_sg_1","name":"Vasilije Micic","league":"euroleague","team":"Hapoel Tel Aviv","position":"SG","overallRating":88,"photoUrl":null},
+    {"id":"el_sg_2","name":"Shane Larkin","league":"euroleague","team":"Anadolu Efes","position":"SG","overallRating":87,"photoUrl":null},
+    {"id":"el_sg_3","name":"Kevin Punter","league":"euroleague","team":"Partizan","position":"SG","overallRating":86,"photoUrl":null},
+    {"id":"el_sg_4","name":"Marko Guduric","league":"euroleague","team":"Fenerbahce","position":"SG","overallRating":84,"photoUrl":null},
+    {"id":"el_sg_5","name":"Elijah Bryant","league":"euroleague","team":"Hapoel Tel Aviv","position":"SG","overallRating":83,"photoUrl":null},
+    {"id":"el_sg_6","name":"Devon Hall","league":"euroleague","team":"Olympiacos","position":"SG","overallRating":82,"photoUrl":null},
+    {"id":"el_sf_1","name":"Nigel Hayes-Davis","league":"euroleague","team":"Fenerbahce","position":"SF","overallRating":89,"photoUrl":null},
+    {"id":"el_sf_2","name":"Sasha Vezenkov","league":"euroleague","team":"Olympiacos","position":"SF","overallRating":88,"photoUrl":null},
+    {"id":"el_sf_3","name":"Mario Hezonja","league":"euroleague","team":"Real Madrid","position":"SF","overallRating":85,"photoUrl":null},
+    {"id":"el_sf_4","name":"Isaia Cordinier","league":"euroleague","team":"Virtus Bologna","position":"SF","overallRating":84,"photoUrl":null},
+    {"id":"el_sf_5","name":"Will Clyburn","league":"euroleague","team":"Anadolu Efes","position":"SF","overallRating":83,"photoUrl":null},
+    {"id":"el_sf_6","name":"Alec Peters","league":"euroleague","team":"Zalgiris Kaunas","position":"SF","overallRating":82,"photoUrl":null},
+    {"id":"el_pf_1","name":"Nikola Mirotic","league":"euroleague","team":"Olympiacos","position":"PF","overallRating":89,"photoUrl":null},
+    {"id":"el_pf_2","name":"Tornike Shengelia","league":"euroleague","team":"FC Barcelona","position":"PF","overallRating":85,"photoUrl":null},
+    {"id":"el_pf_3","name":"Jan Vesely","league":"euroleague","team":"FC Barcelona","position":"PF","overallRating":84,"photoUrl":null},
+    {"id":"el_pf_4","name":"Zach LeDay","league":"euroleague","team":"Panathinaikos","position":"PF","overallRating":84,"photoUrl":null},
+    {"id":"el_pf_5","name":"Dylan Osetkowski","league":"euroleague","team":"Anadolu Efes","position":"PF","overallRating":82,"photoUrl":null},
+    {"id":"el_pf_6","name":"Kostas Antetokounmpo","league":"euroleague","team":"Fenerbahce","position":"PF","overallRating":82,"photoUrl":null},
+    {"id":"el_c_1","name":"Walter Tavares","league":"euroleague","team":"Real Madrid","position":"C","overallRating":90,"photoUrl":null},
+    {"id":"el_c_2","name":"Nikola Milutinov","league":"euroleague","team":"Olympiacos","position":"C","overallRating":87,"photoUrl":null},
+    {"id":"el_c_3","name":"Mathias Lessort","league":"euroleague","team":"Panathinaikos","position":"C","overallRating":86,"photoUrl":null},
+    {"id":"el_c_4","name":"Ante Zizic","league":"euroleague","team":"Maccabi Tel Aviv","position":"C","overallRating":83,"photoUrl":null},
+    {"id":"el_c_5","name":"Vincent Poirier","league":"euroleague","team":"Virtus Bologna","position":"C","overallRating":82,"photoUrl":null},
+    {"id":"el_c_6","name":"Youssoupha Fall","league":"euroleague","team":"AS Monaco","position":"C","overallRating":81,"photoUrl":null},
   ],
-  "nba": [
-    {
-      "id": "nba_pg_1",
-      "name": "Luka Doncic",
-      "league": "nba",
-      "team": "Los Angeles Lakers",
-      "position": "PG",
-      "overallRating": 96,
-      "photoUrl": null
-    },
-    {
-      "id": "nba_pg_2",
-      "name": "Shai Gilgeous-Alexander",
-      "league": "nba",
-      "team": "Oklahoma City Thunder",
-      "position": "PG",
-      "overallRating": 97,
-      "photoUrl": null
-    },
-    {
-      "id": "nba_sg_1",
-      "name": "Anthony Edwards",
-      "league": "nba",
-      "team": "Minnesota Timberwolves",
-      "position": "SG",
-      "overallRating": 93,
-      "photoUrl": null
-    },
-    {
-      "id": "nba_sg_2",
-      "name": "Devin Booker",
-      "league": "nba",
-      "team": "Phoenix Suns",
-      "position": "SG",
-      "overallRating": 92,
-      "photoUrl": null
-    },
-    {
-      "id": "nba_sf_1",
-      "name": "Jayson Tatum",
-      "league": "nba",
-      "team": "Boston Celtics",
-      "position": "SF",
-      "overallRating": 95,
-      "photoUrl": null
-    },
-    {
-      "id": "nba_sf_2",
-      "name": "Kevin Durant",
-      "league": "nba",
-      "team": "Houston Rockets",
-      "position": "SF",
-      "overallRating": 93,
-      "photoUrl": null
-    },
-    {
-      "id": "nba_pf_1",
-      "name": "Giannis Antetokounmpo",
-      "league": "nba",
-      "team": "Milwaukee Bucks",
-      "position": "PF",
-      "overallRating": 97,
-      "photoUrl": null
-    },
-    {
-      "id": "nba_pf_2",
-      "name": "Anthony Davis",
-      "league": "nba",
-      "team": "Dallas Mavericks",
-      "position": "PF",
-      "overallRating": 91,
-      "photoUrl": null
-    },
-    {
-      "id": "nba_c_1",
-      "name": "Nikola Jokic",
-      "league": "nba",
-      "team": "Denver Nuggets",
-      "position": "C",
-      "overallRating": 98,
-      "photoUrl": null
-    },
-    {
-      "id": "nba_c_2",
-      "name": "Victor Wembanyama",
-      "league": "nba",
-      "team": "San Antonio Spurs",
-      "position": "C",
-      "overallRating": 94,
-      "photoUrl": null
-    }
+  nba: [
+    {"id":"nba_pg_1","name":"Shai Gilgeous-Alexander","league":"nba","team":"Oklahoma City Thunder","position":"PG","overallRating":97,"photoUrl":null},
+    {"id":"nba_pg_2","name":"Luka Doncic","league":"nba","team":"Los Angeles Lakers","position":"PG","overallRating":96,"photoUrl":null},
+    {"id":"nba_pg_3","name":"Jalen Brunson","league":"nba","team":"New York Knicks","position":"PG","overallRating":92,"photoUrl":null},
+    {"id":"nba_pg_4","name":"Tyrese Haliburton","league":"nba","team":"Indiana Pacers","position":"PG","overallRating":91,"photoUrl":null},
+    {"id":"nba_pg_5","name":"Cade Cunningham","league":"nba","team":"Detroit Pistons","position":"PG","overallRating":91,"photoUrl":null},
+    {"id":"nba_pg_6","name":"Ja Morant","league":"nba","team":"Memphis Grizzlies","position":"PG","overallRating":89,"photoUrl":null},
+    {"id":"nba_sg_1","name":"Anthony Edwards","league":"nba","team":"Minnesota Timberwolves","position":"SG","overallRating":94,"photoUrl":null},
+    {"id":"nba_sg_2","name":"Devin Booker","league":"nba","team":"Phoenix Suns","position":"SG","overallRating":92,"photoUrl":null},
+    {"id":"nba_sg_3","name":"Donovan Mitchell","league":"nba","team":"Cleveland Cavaliers","position":"SG","overallRating":92,"photoUrl":null},
+    {"id":"nba_sg_4","name":"Jalen Williams","league":"nba","team":"Oklahoma City Thunder","position":"SG","overallRating":89,"photoUrl":null},
+    {"id":"nba_sg_5","name":"Tyler Herro","league":"nba","team":"Miami Heat","position":"SG","overallRating":87,"photoUrl":null},
+    {"id":"nba_sg_6","name":"Jalen Green","league":"nba","team":"Phoenix Suns","position":"SG","overallRating":85,"photoUrl":null},
+    {"id":"nba_sf_1","name":"Jayson Tatum","league":"nba","team":"Boston Celtics","position":"SF","overallRating":95,"photoUrl":null},
+    {"id":"nba_sf_2","name":"Kevin Durant","league":"nba","team":"Houston Rockets","position":"SF","overallRating":93,"photoUrl":null},
+    {"id":"nba_sf_3","name":"Kawhi Leonard","league":"nba","team":"Los Angeles Clippers","position":"SF","overallRating":90,"photoUrl":null},
+    {"id":"nba_sf_4","name":"Jaylen Brown","league":"nba","team":"Boston Celtics","position":"SF","overallRating":90,"photoUrl":null},
+    {"id":"nba_sf_5","name":"Franz Wagner","league":"nba","team":"Orlando Magic","position":"SF","overallRating":89,"photoUrl":null},
+    {"id":"nba_sf_6","name":"Scottie Barnes","league":"nba","team":"Toronto Raptors","position":"SF","overallRating":88,"photoUrl":null},
+    {"id":"nba_pf_1","name":"Giannis Antetokounmpo","league":"nba","team":"Milwaukee Bucks","position":"PF","overallRating":97,"photoUrl":null},
+    {"id":"nba_pf_2","name":"Anthony Davis","league":"nba","team":"Dallas Mavericks","position":"PF","overallRating":91,"photoUrl":null},
+    {"id":"nba_pf_3","name":"Evan Mobley","league":"nba","team":"Cleveland Cavaliers","position":"PF","overallRating":90,"photoUrl":null},
+    {"id":"nba_pf_4","name":"Paolo Banchero","league":"nba","team":"Orlando Magic","position":"PF","overallRating":90,"photoUrl":null},
+    {"id":"nba_pf_5","name":"Julius Randle","league":"nba","team":"Minnesota Timberwolves","position":"PF","overallRating":88,"photoUrl":null},
+    {"id":"nba_pf_6","name":"Lauri Markkanen","league":"nba","team":"Utah Jazz","position":"PF","overallRating":88,"photoUrl":null},
+    {"id":"nba_c_1","name":"Nikola Jokic","league":"nba","team":"Denver Nuggets","position":"C","overallRating":98,"photoUrl":null},
+    {"id":"nba_c_2","name":"Victor Wembanyama","league":"nba","team":"San Antonio Spurs","position":"C","overallRating":95,"photoUrl":null},
+    {"id":"nba_c_3","name":"Alperen Sengun","league":"nba","team":"Houston Rockets","position":"C","overallRating":91,"photoUrl":null},
+    {"id":"nba_c_4","name":"Karl-Anthony Towns","league":"nba","team":"New York Knicks","position":"C","overallRating":90,"photoUrl":null},
+    {"id":"nba_c_5","name":"Bam Adebayo","league":"nba","team":"Miami Heat","position":"C","overallRating":89,"photoUrl":null},
+    {"id":"nba_c_6","name":"Domantas Sabonis","league":"nba","team":"Sacramento Kings","position":"C","overallRating":89,"photoUrl":null},
   ],
-  "mixed": [
-    {
-      "id": "mx_pg_1",
-      "name": "Facundo Campazzo",
-      "league": "euroleague",
-      "team": "Real Madrid",
-      "position": "PG",
-      "overallRating": 88,
-      "photoUrl": null
-    },
-    {
-      "id": "mx_pg_2",
-      "name": "Jalen Brunson",
-      "league": "nba",
-      "team": "New York Knicks",
-      "position": "PG",
-      "overallRating": 92,
-      "photoUrl": null
-    },
-    {
-      "id": "mx_sg_1",
-      "name": "Kevin Punter",
-      "league": "euroleague",
-      "team": "Partizan",
-      "position": "SG",
-      "overallRating": 86,
-      "photoUrl": null
-    },
-    {
-      "id": "mx_sg_2",
-      "name": "Jalen Green",
-      "league": "nba",
-      "team": "Phoenix Suns",
-      "position": "SG",
-      "overallRating": 85,
-      "photoUrl": null
-    },
-    {
-      "id": "mx_sf_1",
-      "name": "Mario Hezonja",
-      "league": "euroleague",
-      "team": "Real Madrid",
-      "position": "SF",
-      "overallRating": 85,
-      "photoUrl": null
-    },
-    {
-      "id": "mx_sf_2",
-      "name": "DeMar DeRozan",
-      "league": "nba",
-      "team": "Sacramento Kings",
-      "position": "SF",
-      "overallRating": 86,
-      "photoUrl": null
-    },
-    {
-      "id": "mx_pf_1",
-      "name": "Nikola Mirotic",
-      "league": "euroleague",
-      "team": "Olympiacos",
-      "position": "PF",
-      "overallRating": 89,
-      "photoUrl": null
-    },
-    {
-      "id": "mx_pf_2",
-      "name": "Julius Randle",
-      "league": "nba",
-      "team": "Minnesota Timberwolves",
-      "position": "PF",
-      "overallRating": 88,
-      "photoUrl": null
-    },
-    {
-      "id": "mx_c_1",
-      "name": "Walter Tavares",
-      "league": "euroleague",
-      "team": "Real Madrid",
-      "position": "C",
-      "overallRating": 90,
-      "photoUrl": null
-    },
-    {
-      "id": "mx_c_2",
-      "name": "Alperen Sengun",
-      "league": "nba",
-      "team": "Houston Rockets",
-      "position": "C",
-      "overallRating": 91,
-      "photoUrl": null
-    }
-  ]
+  mixed: [
+    {"id":"mx_pg_1","name":"Jalen Brunson","league":"nba","team":"New York Knicks","position":"PG","overallRating":92,"photoUrl":null},
+    {"id":"mx_pg_2","name":"Tyrese Haliburton","league":"nba","team":"Indiana Pacers","position":"PG","overallRating":91,"photoUrl":null},
+    {"id":"mx_pg_3","name":"Kendrick Nunn","league":"euroleague","team":"Panathinaikos","position":"PG","overallRating":90,"photoUrl":null},
+    {"id":"mx_pg_4","name":"Ja Morant","league":"nba","team":"Memphis Grizzlies","position":"PG","overallRating":89,"photoUrl":null},
+    {"id":"mx_pg_5","name":"Facundo Campazzo","league":"euroleague","team":"Real Madrid","position":"PG","overallRating":88,"photoUrl":null},
+    {"id":"mx_pg_6","name":"Kostas Sloukas","league":"euroleague","team":"Panathinaikos","position":"PG","overallRating":87,"photoUrl":null},
+    {"id":"mx_sg_1","name":"Jalen Williams","league":"nba","team":"Oklahoma City Thunder","position":"SG","overallRating":89,"photoUrl":null},
+    {"id":"mx_sg_2","name":"Vasilije Micic","league":"euroleague","team":"Hapoel Tel Aviv","position":"SG","overallRating":88,"photoUrl":null},
+    {"id":"mx_sg_3","name":"Shane Larkin","league":"euroleague","team":"Anadolu Efes","position":"SG","overallRating":87,"photoUrl":null},
+    {"id":"mx_sg_4","name":"Tyler Herro","league":"nba","team":"Miami Heat","position":"SG","overallRating":87,"photoUrl":null},
+    {"id":"mx_sg_5","name":"Kevin Punter","league":"euroleague","team":"Partizan","position":"SG","overallRating":86,"photoUrl":null},
+    {"id":"mx_sg_6","name":"Jalen Green","league":"nba","team":"Phoenix Suns","position":"SG","overallRating":85,"photoUrl":null},
+    {"id":"mx_sf_1","name":"Nigel Hayes-Davis","league":"euroleague","team":"Fenerbahce","position":"SF","overallRating":89,"photoUrl":null},
+    {"id":"mx_sf_2","name":"Franz Wagner","league":"nba","team":"Orlando Magic","position":"SF","overallRating":89,"photoUrl":null},
+    {"id":"mx_sf_3","name":"Sasha Vezenkov","league":"euroleague","team":"Olympiacos","position":"SF","overallRating":88,"photoUrl":null},
+    {"id":"mx_sf_4","name":"Scottie Barnes","league":"nba","team":"Toronto Raptors","position":"SF","overallRating":88,"photoUrl":null},
+    {"id":"mx_sf_5","name":"DeMar DeRozan","league":"nba","team":"Sacramento Kings","position":"SF","overallRating":86,"photoUrl":null},
+    {"id":"mx_sf_6","name":"Mario Hezonja","league":"euroleague","team":"Real Madrid","position":"SF","overallRating":85,"photoUrl":null},
+    {"id":"mx_pf_1","name":"Evan Mobley","league":"nba","team":"Cleveland Cavaliers","position":"PF","overallRating":90,"photoUrl":null},
+    {"id":"mx_pf_2","name":"Nikola Mirotic","league":"euroleague","team":"Olympiacos","position":"PF","overallRating":89,"photoUrl":null},
+    {"id":"mx_pf_3","name":"Julius Randle","league":"nba","team":"Minnesota Timberwolves","position":"PF","overallRating":88,"photoUrl":null},
+    {"id":"mx_pf_4","name":"Lauri Markkanen","league":"nba","team":"Utah Jazz","position":"PF","overallRating":88,"photoUrl":null},
+    {"id":"mx_pf_5","name":"Tornike Shengelia","league":"euroleague","team":"FC Barcelona","position":"PF","overallRating":85,"photoUrl":null},
+    {"id":"mx_pf_6","name":"Jan Vesely","league":"euroleague","team":"FC Barcelona","position":"PF","overallRating":84,"photoUrl":null},
+    {"id":"mx_c_1","name":"Alperen Sengun","league":"nba","team":"Houston Rockets","position":"C","overallRating":91,"photoUrl":null},
+    {"id":"mx_c_2","name":"Walter Tavares","league":"euroleague","team":"Real Madrid","position":"C","overallRating":90,"photoUrl":null},
+    {"id":"mx_c_3","name":"Bam Adebayo","league":"nba","team":"Miami Heat","position":"C","overallRating":89,"photoUrl":null},
+    {"id":"mx_c_4","name":"Domantas Sabonis","league":"nba","team":"Sacramento Kings","position":"C","overallRating":89,"photoUrl":null},
+    {"id":"mx_c_5","name":"Nikola Milutinov","league":"euroleague","team":"Olympiacos","position":"C","overallRating":87,"photoUrl":null},
+    {"id":"mx_c_6","name":"Mathias Lessort","league":"euroleague","team":"Panathinaikos","position":"C","overallRating":86,"photoUrl":null},
+  ],
 } as Record<GameMode, Player[]>;
 
 export function poolFor(mode: GameMode): Player[] {

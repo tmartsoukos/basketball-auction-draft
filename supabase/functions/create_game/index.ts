@@ -2,7 +2,20 @@ import { errorResponse, json, preflight, readBody } from './http.ts';
 import { generateRoomCode, serviceClient, shuffle } from './db.ts';
 import { poolFor } from './players.ts';
 import { DEFAULT_INCREMENT, DEFAULT_BUDGET, DEFAULT_TOTAL_ROUNDS } from './engine.ts';
-import type { GameMode } from './types.ts';
+import type { GameMode, Player, Position } from './types.ts';
+
+const POSITIONS: Position[] = ['PG', 'SG', 'SF', 'PF', 'C'];
+const PER_POSITION = 2;
+
+/** Κληρώνει 2 παίκτες ανά θέση από τη δεξαμενή του mode και τους ανακατεύει. */
+function drawPool(players: Player[]): string[] {
+  const drawn = POSITIONS.flatMap((position) =>
+    shuffle(players.filter((p) => p.position === position))
+      .slice(0, PER_POSITION)
+      .map((p) => p.id)
+  );
+  return shuffle(drawn);
+}
 
 interface Body {
   mode?: GameMode;
@@ -33,7 +46,7 @@ Deno.serve(async (req: Request) => {
   }
 
   const client = serviceClient();
-  const pool = shuffle(poolFor(mode).map((p) => p.id));
+  const pool = drawPool(poolFor(mode));
 
   let game: { id: string; room_code: string } | null = null;
   for (let attempt = 0; attempt < 5 && !game; attempt++) {

@@ -7,6 +7,8 @@ const here = dirname(fileURLToPath(import.meta.url));
 const MODES = ['euroleague', 'nba', 'mixed'];
 const POSITIONS = ['PG', 'SG', 'SF', 'PF', 'C'];
 const LEAGUES = ['euroleague', 'nba'];
+const PER_POSITION = 6;
+const POOL_SIZE = POSITIONS.length * PER_POSITION;
 const MAX_RATING_DIFF_RATIO = 0.15;
 
 const errors = [];
@@ -16,8 +18,8 @@ for (const mode of MODES) {
   const players = JSON.parse(readFileSync(file, 'utf-8'));
   const label = `players_${mode}.json`;
 
-  if (players.length !== 10) {
-    errors.push(`${label}: πρέπει να έχει 10 παίκτες, έχει ${players.length}`);
+  if (players.length !== POOL_SIZE) {
+    errors.push(`${label}: πρέπει να έχει ${POOL_SIZE} παίκτες, έχει ${players.length}`);
   }
 
   const ids = new Set();
@@ -45,21 +47,33 @@ for (const mode of MODES) {
     }
   }
 
+  // Σε κάθε γύρο κληρώνονται 2 παίκτες ανά θέση, οπότε όλη η ομάδα θέσης πρέπει να
+  // είναι κοντά σε rating: όποιοι δύο κι αν βγουν, η δημοπρασία να έχει νόημα.
   for (const pos of POSITIONS) {
-    const pair = players.filter((p) => p.position === pos);
-    if (pair.length !== 2) {
-      errors.push(`${label}: η θέση ${pos} έχει ${pair.length} παίκτες αντί για 2`);
+    const group = players.filter((p) => p.position === pos);
+    if (group.length !== PER_POSITION) {
+      errors.push(`${label}: η θέση ${pos} έχει ${group.length} παίκτες αντί για ${PER_POSITION}`);
       continue;
     }
-    const [a, b] = pair;
-    const high = Math.max(a.overallRating, b.overallRating);
-    const diff = Math.abs(a.overallRating - b.overallRating);
-    const ratio = diff / high;
+    const ratings = group.map((p) => p.overallRating);
+    const high = Math.max(...ratings);
+    const low = Math.min(...ratings);
+    const ratio = (high - low) / high;
     if (ratio > MAX_RATING_DIFF_RATIO) {
+      const best = group.find((p) => p.overallRating === high);
+      const worst = group.find((p) => p.overallRating === low);
       errors.push(
-        `${label}: το ζευγάρι ${pos} (${a.name} ${a.overallRating} vs ${b.name} ${b.overallRating}) ` +
+        `${label}: η θέση ${pos} (${best.name} ${high} vs ${worst.name} ${low}) ` +
           `έχει διαφορά ${(ratio * 100).toFixed(1)}% > ${MAX_RATING_DIFF_RATIO * 100}%`
       );
+    }
+  }
+
+  if (mode === 'mixed') {
+    for (const league of LEAGUES) {
+      if (!players.some((p) => p.league === league)) {
+        errors.push(`${label}: δεν περιέχει κανέναν παίκτη από ${league}`);
+      }
     }
   }
 }
@@ -70,4 +84,6 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log('OK: και τα 3 datasets έχουν 10 παίκτες, 2 ανά θέση, με ισορροπημένα ratings.');
+console.log(
+  `OK: και τα 3 datasets έχουν ${POOL_SIZE} παίκτες, ${PER_POSITION} ανά θέση, με ισορροπημένα ratings.`
+);

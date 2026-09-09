@@ -31,9 +31,19 @@ const pools = {
   mixed: JSON.parse(readFileSync(join(dataDir, 'players_mixed.json'), 'utf-8')),
 };
 
+// Ένας παίκτης ανά γραμμή: το αρχείο ταξιδεύει ολόκληρο σε κάθε deploy.
+const poolsLiteral = Object.entries(pools)
+  .map(
+    ([mode, list]) =>
+      `  ${mode}: [\n${list.map((p) => `    ${JSON.stringify(p)},`).join('\n')}\n  ],`
+  )
+  .join('\n');
+
 const players = `import type { GameMode, Player } from './types.ts';
 
-export const PLAYER_POOLS: Record<GameMode, Player[]> = ${JSON.stringify(pools, null, 2)} as Record<GameMode, Player[]>;
+export const PLAYER_POOLS: Record<GameMode, Player[]> = {
+${poolsLiteral}
+} as Record<GameMode, Player[]>;
 
 export function poolFor(mode: GameMode): Player[] {
   return PLAYER_POOLS[mode];

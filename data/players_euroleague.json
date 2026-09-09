@@ -1,92 +1,36 @@
 [
-  {
-    "id": "el_pg_1",
-    "name": "Facundo Campazzo",
-    "league": "euroleague",
-    "team": "Real Madrid",
-    "position": "PG",
-    "overallRating": 88,
-    "photoUrl": null
-  },
-  {
-    "id": "el_pg_2",
-    "name": "Kendrick Nunn",
-    "league": "euroleague",
-    "team": "Panathinaikos",
-    "position": "PG",
-    "overallRating": 90,
-    "photoUrl": null
-  },
-  {
-    "id": "el_sg_1",
-    "name": "Kevin Punter",
-    "league": "euroleague",
-    "team": "Partizan",
-    "position": "SG",
-    "overallRating": 86,
-    "photoUrl": null
-  },
-  {
-    "id": "el_sg_2",
-    "name": "Shane Larkin",
-    "league": "euroleague",
-    "team": "Anadolu Efes",
-    "position": "SG",
-    "overallRating": 87,
-    "photoUrl": null
-  },
-  {
-    "id": "el_sf_1",
-    "name": "Mario Hezonja",
-    "league": "euroleague",
-    "team": "Real Madrid",
-    "position": "SF",
-    "overallRating": 85,
-    "photoUrl": null
-  },
-  {
-    "id": "el_sf_2",
-    "name": "Alec Peters",
-    "league": "euroleague",
-    "team": "Zalgiris Kaunas",
-    "position": "SF",
-    "overallRating": 82,
-    "photoUrl": null
-  },
-  {
-    "id": "el_pf_1",
-    "name": "Nikola Mirotic",
-    "league": "euroleague",
-    "team": "Olympiacos",
-    "position": "PF",
-    "overallRating": 89,
-    "photoUrl": null
-  },
-  {
-    "id": "el_pf_2",
-    "name": "Jan Vesely",
-    "league": "euroleague",
-    "team": "FC Barcelona",
-    "position": "PF",
-    "overallRating": 84,
-    "photoUrl": null
-  },
-  {
-    "id": "el_c_1",
-    "name": "Walter Tavares",
-    "league": "euroleague",
-    "team": "Real Madrid",
-    "position": "C",
-    "overallRating": 90,
-    "photoUrl": null
-  },
-  {
-    "id": "el_c_2",
-    "name": "Mathias Lessort",
-    "league": "euroleague",
-    "team": "Panathinaikos",
-    "position": "C",
-    "overallRating": 86,
-    "photoUrl": null
-  }
+  { "id": "el_pg_1", "name": "Kendrick Nunn", "league": "euroleague", "team": "Panathinaikos", "position": "PG", "overallRating": 90, "photoUrl": null },
+  { "id": "el_pg_2", "name": "Facundo Campazzo", "league": "euroleague", "team": "Real Madrid", "position": "PG", "overallRating": 88, "photoUrl": null },
+  { "id": "el_pg_3", "name": "Kostas Sloukas", "league": "euroleague", "team": "Panathinaikos", "position": "PG", "overallRating": 87, "photoUrl": null },
+  { "id": "el_pg_4", "name": "T.J. Shorts", "league": "euroleague", "team": "Panathinaikos", "position": "PG", "overallRating": 86, "photoUrl": null },
+  { "id": "el_pg_5", "name": "Nick Calathes", "league": "euroleague", "team": "Anadolu Efes", "position": "PG", "overallRating": 85, "photoUrl": null },
+  { "id": "el_pg_6", "name": "Markus Howard", "league": "euroleague", "team": "Dubai Basketball", "position": "PG", "overallRating": 84, "photoUrl": null },
+
+  { "id": "el_sg_1", "name": "Vasilije Micic", "league": "euroleague", "team": "Hapoel Tel Aviv", "position": "SG", "overallRating": 88, "photoUrl": null },
+  { "id": "el_sg_2", "name": "Shane Larkin", "league": "euroleague", "team": "Anadolu Efes", "position": "SG", "overallRating": 87, "photoUrl": null },
+  { "id": "el_sg_3", "name": "Kevin Punter", "league": "euroleague", "team": "Partizan", "position": "SG", "overallRating": 86, "photoUrl": null },
+  { "id": "el_sg_4", "name": "Marko Guduric", "league": "euroleague", "team": "Fenerbahce", "position": "SG", "overallRating": 84, "photoUrl": null },
+  { "id": "el_sg_5", "name": "Elijah Bryant", "league": "euroleague", "team": "Hapoel Tel Aviv", "position": "SG", "overallRating": 83, "photoUrl": null },
+  { "id": "el_sg_6", "name": "Devon Hall", "league": "euroleague", "team": "Olympiacos", "position": "SG", "overallRating": 82, "photoUrl": null },
+
+  { "id": "el_sf_1", "name": "Nigel Hayes-Davis", "league": "euroleague", "team": "Fenerbahce", "position": "SF", "overallRating": 89, "photoUrl": null },
+  { "id": "el_sf_2", "name": "Sasha Vezenkov", "league": "euroleague", "team": "Olympiacos", "position": "SF", "overallRating": 88, "photoUrl": null },
+  { "id": "el_sf_3", "name": "Mario Hezonja", "league": "euroleague", "team": "Real Madrid", "position": "SF", "overallRating": 85, "photoUrl": null },
+  { "id": "el_sf_4", "name": "Isaia Cordinier", "league": "euroleague", "team": "Virtus Bologna", "position": "SF", "overallRating": 84, "photoUrl": null },
+  { "id": "el_sf_5", "name": "Will Clyburn", "league": "euroleague", "team": "Anadolu Efes", "position": "SF", "overallRating": 83, "photoUrl": null },
+  { "id": "el_sf_6", "name": "Alec Peters", "league": "euroleague", "team": "Zalgiris Kaunas", "position": "SF", "overallRating": 82, "photoUrl": null },
+
+  { "id": "el_pf_1", "name": "Nikola Mirotic", "league": "euroleague", "team": "Olympiacos", "position": "PF", "overallRating": 89, "photoUrl": null },
+  { "id": "el_pf_2", "name": "Tornike Shengelia", "league": "euroleague", "team": "FC Barcelona", "position": "PF", "overallRating": 85, "photoUrl": null },
+  { "id": "el_pf_3", "name": "Jan Vesely", "league": "euroleague", "team": "FC Barcelona", "position": "PF", "overallRating": 84, "photoUrl": null },
+  { "id": "el_pf_4", "name": "Zach LeDay", "league": "euroleague", "team": "Panathinaikos", "position": "PF", "overallRating": 84, "photoUrl": null },
+  { "id": "el_pf_5", "name": "Dylan Osetkowski", "league": "euroleague", "team": "Anadolu Efes", "position": "PF", "overallRating": 82, "photoUrl": null },
+  { "id": "el_pf_6", "name": "Kostas Antetokounmpo", "league": "euroleague", "team": "Fenerbahce", "position": "PF", "overallRating": 82, "photoUrl": null },
+
+  { "id": "el_c_1", "name": "Walter Tavares", "league": "euroleague", "team": "Real Madrid", "position": "C", "overallRating": 90, "photoUrl": null },
+  { "id": "el_c_2", "name": "Nikola Milutinov", "league": "euroleague", "team": "Olympiacos", "position": "C", "overallRating": 87, "photoUrl": null },
+  { "id": "el_c_3", "name": "Mathias Lessort", "league": "euroleague", "team": "Panathinaikos", "position": "C", "overallRating": 86, "photoUrl": null },
+  { "id": "el_c_4", "name": "Ante Zizic", "league": "euroleague", "team": "Maccabi Tel Aviv", "position": "C", "overallRating": 83, "photoUrl": null },
+  { "id": "el_c_5", "name": "Vincent Poirier", "league": "euroleague", "team": "Virtus Bologna", "position": "C", "overallRating": 82, "photoUrl": null },
+  { "id": "el_c_6", "name": "Youssoupha Fall", "league": "euroleague", "team": "AS Monaco", "position": "C", "overallRating": 81, "photoUrl": null }
 ]

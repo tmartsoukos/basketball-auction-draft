@@ -12,8 +12,10 @@ Online PWA δημοπρασίας μπασκετμπολιστών για **δύ
 ## Κανόνες
 
 - Κάθε παίκτης ξεκινά με ίδιο budget (προεπιλογή 20, ρυθμιζόμενο 10-50).
-- Η δεξαμενή έχει 10 μπασκετμπολίστες: **2 για κάθε θέση** (PG, SG, SF, PF, C).
-  Μέσα σε κάθε ζευγάρι θέσης τα ratings είναι κοντά (διαφορά ≤ 15%), ώστε κάθε γύρος να έχει ουσιαστικό ανταγωνισμό.
+- Κάθε mode έχει δεξαμενή 30 μπασκετμπολιστών, **6 για κάθε θέση** (PG, SG, SF, PF, C).
+  Σε κάθε παιχνίδι κληρώνονται server-side **2 τυχαίοι ανά θέση**, άρα 10 κάρτες — διαφορετικές κάθε φορά.
+- Μέσα σε κάθε ομάδα θέσης τα ratings είναι κοντά (διαφορά ≤ 15% μεταξύ του καλύτερου και του χειρότερου),
+  ώστε όποιοι δύο κι αν κληρωθούν, η δημοπρασία να έχει ουσιαστικό ανταγωνισμό.
 - 10 γύροι. Σε κάθε γύρο αποκαλύπτεται ένας παίκτης με τυχαία σειρά (κληρώνεται server-side στην αρχή του παιχνιδιού).
 - Τη δημοπρασία ανοίγει εναλλάξ ο ένας και ο άλλος (γύρος 1: παίκτης 1, γύρος 2: παίκτης 2, κ.ο.κ.).
 - English auction: ο πρώτος δηλώνει ποσό ≥ 1, μετά εναλλάσσονται ανεβάζοντας τουλάχιστον κατά το βήμα προσφοράς,
@@ -32,7 +34,7 @@ Online PWA δημοπρασίας μπασκετμπολιστών για **δύ
 ## Αρχιτεκτονική
 
 ```
-data/                     Τα 3 datasets (euroleague / nba / mixed) + script επικύρωσης
+data/                     Τα 3 datasets των 30 παικτών (euroleague / nba / mixed) + script επικύρωσης
 packages/engine/          Καθαρή λογική παιχνιδιού (χωρίς δίκτυο) + unit tests
 supabase/migrations/      Schema: games, game_players, game_sessions, game_pool, bid_events
 supabase/shared-src/      Helpers των Edge Functions (http, πρόσβαση στη βάση)
@@ -100,7 +102,7 @@ npx supabase functions deploy create_game join_game set_ready reveal_player plac
 | `npm run dev` | Dev server του PWA |
 | `npm run build` | Type check + production build (παράγει και το service worker) |
 | `npm test` | Unit tests της λογικής παιχνιδιού (vitest, χωρίς δίκτυο) |
-| `npm run validate:players` | Ελέγχει 10 παίκτες/mode, 2 ανά θέση, ratings εντός ορίου |
+| `npm run validate:players` | Ελέγχει 30 παίκτες/mode, 6 ανά θέση, ratings εντός ορίου |
 | `npm run check` | validate:players + tests |
 | `npm run sync:shared` | Συγχρονίζει engine/datasets/helpers στις Edge Functions |
 | `node scripts/generate-icons.mjs` | Ξαναφτιάχνει τα εικονίδια του PWA |
