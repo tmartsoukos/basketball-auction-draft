@@ -1,0 +1,92 @@
+[
+  {
+    "id": "mx_pg_1",
+    "name": "Facundo Campazzo",
+    "league": "euroleague",
+    "team": "Real Madrid",
+    "position": "PG",
+    "overallRating": 88,
+    "photoUrl": null
+  },
+  {
+    "id": "mx_pg_2",
+    "name": "Jalen Brunson",
+    "league": "nba",
+    "team": "New York Knicks",
+    "position": "PG",
+    "overallRating": 92,
+    "photoUrl": null
+  },
+  {
+    "id": "mx_sg_1",
+    "name": "Kevin Punter",
+    "league": "euroleague",
+    "team": "Partizan",
+    "position": "SG",
+    "overallRating": 86,
+    "photoUrl": null
+  },
+  {
+    "id": "mx_sg_2",
+    "name": "Jalen Green",
+    "league": "nba",
+    "team": "Phoenix Suns",
+    "position": "SG",
+    "overallRating": 85,
+    "photoUrl": null
+  },
+  {
+    "id": "mx_sf_1",
+    "name": "Mario Hezonja",
+    "league": "euroleague",
+    "team": "Real Madrid",
+    "position": "SF",
+    "overallRating": 85,
+    "photoUrl": null
+  },
+  {
+    "id": "mx_sf_2",
+    "name": "DeMar DeRozan",
+    "league": "nba",
+    "team": "Sacramento Kings",
+    "position": "SF",
+    "overallRating": 86,
+    "photoUrl": null
+  },
+  {
+    "id": "mx_pf_1",
+    "name": "Nikola Mirotic",
+    "league": "euroleague",
+    "team": "Olympiacos",
+    "position": "PF",
+    "overallRating": 89,
+    "photoUrl": null
+  },
+  {
+    "id": "mx_pf_2",
+    "name": "Julius Randle",
+    "league": "nba",
+    "team": "Minnesota Timberwolves",
+    "position": "PF",
+    "overallRating": 88,
+    "photoUrl": null
+  },
+  {
+    "id": "mx_c_1",
+    "name": "Walter Tavares",
+    "league": "euroleague",
+    "team": "Real Madrid",
+    "position": "C",
+    "overallRating": 90,
+    "photoUrl": null
+  },
+  {
+    "id": "mx_c_2",
+    "name": "Alperen Sengun",
+    "league": "nba",
+    "team": "Houston Rockets",
+    "position": "C",
+    "overallRating": 91,
+    "photoUrl": null
+  }
+]

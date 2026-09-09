@@ -1,0 +1,21 @@
+{
+  "name": "basketball-auction-draft",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "packages/engine",
+    "web"
+  ],
+  "devDependencies": {
+    "vite": "^7.3.6"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace web",
+    "build": "npm run build --workspace web",
+    "test": "npm run test --workspace @bad/engine",
+    "validate:players": "node data/validate_players.mjs",
+    "sync:shared": "node scripts/sync-shared.mjs",
+    "check": "npm run validate:players && npm run test"
+  }
+}

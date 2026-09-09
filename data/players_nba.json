@@ -1,0 +1,92 @@
+[
+  {
+    "id": "nba_pg_1",
+    "name": "Luka Doncic",
+    "league": "nba",
+    "team": "Los Angeles Lakers",
+    "position": "PG",
+    "overallRating": 96,
+    "photoUrl": null
+  },
+  {
+    "id": "nba_pg_2",
+    "name": "Shai Gilgeous-Alexander",
+    "league": "nba",
+    "team": "Oklahoma City Thunder",
+    "position": "PG",
+    "overallRating": 97,
+    "photoUrl": null
+  },
+  {
+    "id": "nba_sg_1",
+    "name": "Anthony Edwards",
+    "league": "nba",
+    "team": "Minnesota Timberwolves",
+    "position": "SG",
+    "overallRating": 93,
+    "photoUrl": null
+  },
+  {
+    "id": "nba_sg_2",
+    "name": "Devin Booker",
+    "league": "nba",
+    "team": "Phoenix Suns",
+    "position": "SG",
+    "overallRating": 92,
+    "photoUrl": null
+  },
+  {
+    "id": "nba_sf_1",
+    "name": "Jayson Tatum",
+    "league": "nba",
+    "team": "Boston Celtics",
+    "position": "SF",
+    "overallRating": 95,
+    "photoUrl": null
+  },
+  {
+    "id": "nba_sf_2",
+    "name": "Kevin Durant",
+    "league": "nba",
+    "team": "Houston Rockets",
+    "position": "SF",
+    "overallRating": 93,
+    "photoUrl": null
+  },
+  {
+    "id": "nba_pf_1",
+    "name": "Giannis Antetokounmpo",
+    "league": "nba",
+    "team": "Milwaukee Bucks",
+    "position": "PF",
+    "overallRating": 97,
+    "photoUrl": null
+  },
+  {
+    "id": "nba_pf_2",
+    "name": "Anthony Davis",
+    "league": "nba",
+    "team": "Dallas Mavericks",
+    "position": "PF",
+    "overallRating": 91,
+    "photoUrl": null
+  },
+  {
+    "id": "nba_c_1",
+    "name": "Nikola Jokic",
+    "league": "nba",
+    "team": "Denver Nuggets",
+    "position": "C",
+    "overallRating": 98,
+    "photoUrl": null
+  },
+  {
+    "id": "nba_c_2",
+    "name": "Victor Wembanyama",
+    "league": "nba",
+    "team": "San Antonio Spurs",
+    "position": "C",
+    "overallRating": 94,
+    "photoUrl": null
+  }
+]
